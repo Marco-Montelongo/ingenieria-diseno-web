@@ -2,10 +2,6 @@ import { getFormData } from "../core/projectStore.js";
 import { generateGeneralCoverPdf } from "./generateGeneralCoverPdf.js";
 
 export async function generatePDF(formDef) {
-    const BASE_PATH = window.location.pathname.split("/")[1]
-        ? "/" + window.location.pathname.split("/")[1]
-        : "";
-
     const data = getFormData(formDef.id);
     if (!data) {
         alert("Guarda primero el formulario");
@@ -156,9 +152,12 @@ export async function generatePDF(formDef) {
             reader.readAsDataURL(blob);
         });
     };
+    const BASE_PATH = window.location.pathname.split("/")[1]
+        ? "/" + window.location.pathname.split("/")[1]
+        : "";
 
-    const escudoFI = await loadImage(`/${BASE_PATH}/img/escudoFI.png`);
-    const escudoUNAM = await loadImage(`/${BASE_PATH}/img/escudoUNAM.png`);
+    const escudoFI = await loadImage(`${BASE_PATH}/img/escudoFI.png`);
+    const escudoUNAM = await loadImage(`${BASE_PATH}/img/escudoUNAM.png`);
 
     pdf.addImage(escudoFI, "PNG", MARGIN, MARGIN, 20, 20);
     pdf.addImage(escudoUNAM, "PNG", PAGE_WIDTH - MARGIN - 20, MARGIN, 20, 20);
@@ -209,5 +208,6 @@ export async function generatePDF(formDef) {
 
     pdf.save(`form_${formDef.id}.pdf`);
 }
+
 
 
