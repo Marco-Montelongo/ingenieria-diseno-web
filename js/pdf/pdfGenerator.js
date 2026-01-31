@@ -1,5 +1,56 @@
 import { getFormData } from "../core/projectStore.js";
 import { generateGeneralCoverPdf } from "./generateGeneralCoverPdf.js";
+import { BASE_PATH, loadImage } from "./pdfUtils.js";
+
+async function drawInstitutionalHeader(pdf) {
+    const PAGE_WIDTH = pdf.internal.pageSize.getWidth();
+    const MARGIN = 25.4;
+
+    const escudoFI = await loadImage(`${BASE_PATH}/img/escudoFI.png`);
+    const escudoUNAM = await loadImage(`${BASE_PATH}/img/escudoUNAM.png`);
+
+    if (escudoFI) {
+        pdf.addImage(escudoFI, "PNG", MARGIN, MARGIN, 20, 20);
+    }
+
+    if (escudoUNAM) {
+        pdf.addImage(
+            escudoUNAM,
+            "PNG",
+            PAGE_WIDTH - MARGIN - 20,
+            MARGIN,
+            20,
+            20
+        );
+    }
+
+    pdf.setFont("times", "bold");
+    pdf.setFontSize(11);
+
+    pdf.text(
+        "UNIVERSIDAD NACIONAL AUTÓNOMA DE MÉXICO",
+        PAGE_WIDTH / 2,
+        MARGIN + 6,
+        { align: "center" }
+    );
+
+    pdf.text(
+        "FACULTAD DE INGENIERÍA",
+        PAGE_WIDTH / 2,
+        MARGIN + 12,
+        { align: "center" }
+    );
+
+    pdf.text(
+        "INGENIERÍA DE DISEÑO",
+        PAGE_WIDTH / 2,
+        MARGIN + 18,
+        { align: "center" }
+    );
+
+    pdf.setFont("times", "normal");
+}
+
 
 export async function generatePDF(formDef) {
     const data = getFormData(formDef.id);
@@ -140,27 +191,7 @@ export async function generatePDF(formDef) {
         pdf.setFontSize(12);
     }
 
-    /* =====================
-       ENCABEZADO INSTITUCIONAL
-    ====================== */
-    const loadImage = async (src) => {
-        const res = await fetch(src);
-        const blob = await res.blob();
-        return new Promise(resolve => {
-            const reader = new FileReader();
-            reader.onload = () => resolve(reader.result);
-            reader.readAsDataURL(blob);
-        });
-    };
-    const BASE_PATH = window.location.pathname.split("/")[1]
-        ? "/" + window.location.pathname.split("/")[1]
-        : "";
-
-    const escudoFI = await loadImage(`${BASE_PATH}/img/escudoFI.png`);
-    const escudoUNAM = await loadImage(`${BASE_PATH}/img/escudoUNAM.png`);
-
-    pdf.addImage(escudoFI, "PNG", MARGIN, MARGIN, 20, 20);
-    pdf.addImage(escudoUNAM, "PNG", PAGE_WIDTH - MARGIN - 20, MARGIN, 20, 20);
+    await drawInstitutionalHeader(pdf);
 
     pdf.setFont("times", "bold");
     pdf.setFontSize(11);
@@ -208,6 +239,7 @@ export async function generatePDF(formDef) {
 
     pdf.save(`form_${formDef.id}.pdf`);
 }
+
 
 
 
