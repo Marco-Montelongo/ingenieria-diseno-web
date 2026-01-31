@@ -32,12 +32,7 @@ export const form3_8 = {
             label: "Tablas y gráficos de costos",
             type: "image",
             help: "Sube hojas de costos, tablas de cálculo o gráficos."
-        },
-        {
-            key: "costaTables",
-            label: "Tablas y gráficos de costos",
-            type: "image",
-            help: "Sube hojas de costos, tablas de cálculo o gráficos."
         }
     ]
 };
+
