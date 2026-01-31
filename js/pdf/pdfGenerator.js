@@ -157,8 +157,8 @@ export async function generatePDF(formDef) {
         });
     };
 
-    const escudoFI = await loadImage(`${BASE_PATH}/img/escudoFI.png`);
-    const escudoUNAM = await loadImage(`${BASE_PATH}/img/escudoUNAM.png`);
+    const escudoFI = await loadImage(`/${BASE_PATH}/img/escudoFI.png`);
+    const escudoUNAM = await loadImage(`/${BASE_PATH}/img/escudoUNAM.png`);
 
     pdf.addImage(escudoFI, "PNG", MARGIN, MARGIN, 20, 20);
     pdf.addImage(escudoUNAM, "PNG", PAGE_WIDTH - MARGIN - 20, MARGIN, 20, 20);
@@ -209,4 +209,5 @@ export async function generatePDF(formDef) {
 
     pdf.save(`form_${formDef.id}.pdf`);
 }
+
 
