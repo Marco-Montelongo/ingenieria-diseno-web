@@ -40,8 +40,8 @@ export async function generateCoverPdf(formDef) {
     /* =====================
        ESCUDOS (SIN APLASTAR)
     ====================== */
-    const escudoFI = await loadImage("img/escudoFI.png");
-    const escudoUNAM = await loadImage("img/escudoUNAM.png");
+    const escudoFI = await loadImage("/ingenieria-diseno-web/img/escudoFI.png");
+    const escudoUNAM = await loadImage("/ingenieria-diseno-web/img/escudoUNAM.png");
 
     const escudoW = 22;
     const fi = pdf.getImageProperties(escudoFI);
@@ -158,5 +158,6 @@ export async function generateCoverPdf(formDef) {
     ====================== */
     pdf.save(`CoverPage_Equipo_${data.teamNumber || "NA"}.pdf`);
 }
+
 
 
