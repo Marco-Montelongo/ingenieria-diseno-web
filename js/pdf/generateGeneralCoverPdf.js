@@ -1,6 +1,10 @@
 import { getFormData } from "../core/projectStore.js";
 
 export async function generateGeneralCoverPdf(pdf) {
+    const BASE_PATH = window.location.pathname.split("/")[1]
+        ? "/" + window.location.pathname.split("/")[1]
+        : "";
+
     const data = getFormData("Equipo");
     if (!data) {
         alert("Guarda primero el formulario");
@@ -37,8 +41,9 @@ export async function generateGeneralCoverPdf(pdf) {
     /* =====================
        ESCUDOS (SIN APLASTAR)
     ====================== */
-    const escudoFI = await loadImage("/ingenieria-diseno-web/img/escudoFI.png");
-    const escudoUNAM = await loadImage("/ingenieria-diseno-web/img/escudoUNAM.png");
+    const escudoFI = await loadImage(`${BASE_PATH}/img/escudoFI.png`);
+    const escudoUNAM = await loadImage(`${BASE_PATH}/img/escudoUNAM.png`);
+
 
     const escudoW = 22;
     const fi = pdf.getImageProperties(escudoFI);
@@ -150,6 +155,7 @@ export async function generateGeneralCoverPdf(pdf) {
         12
     );
 }
+
 
 
 
