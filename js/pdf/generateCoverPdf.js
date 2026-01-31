@@ -1,6 +1,11 @@
 import { getFormData } from "../core/projectStore.js";
 
 export async function generateCoverPdf(formDef) {
+    const BASE_PATH = window.location.pathname.split("/")[1]
+        ? "/" + window.location.pathname.split("/")[1]
+        : "";
+
+    
     const data = getFormData(formDef.id);
     if (!data) {
         alert("Guarda primero el formulario");
@@ -40,8 +45,8 @@ export async function generateCoverPdf(formDef) {
     /* =====================
        ESCUDOS (SIN APLASTAR)
     ====================== */
-    const escudoFI = await loadImage("/ingenieria-diseno-web/img/escudoFI.png");
-    const escudoUNAM = await loadImage("/ingenieria-diseno-web/img/escudoUNAM.png");
+    const escudoFI = await loadImage(`${BASE_PATH}/img/escudoFI.png`);
+    const escudoUNAM = await loadImage(`${BASE_PATH}/img/escudoUNAM.png`);
 
     const escudoW = 22;
     const fi = pdf.getImageProperties(escudoFI);
@@ -158,6 +163,7 @@ export async function generateCoverPdf(formDef) {
     ====================== */
     pdf.save(`CoverPage_Equipo_${data.teamNumber || "NA"}.pdf`);
 }
+
 
 
 
