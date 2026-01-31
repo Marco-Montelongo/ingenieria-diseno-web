@@ -1,10 +1,7 @@
 import { getFormData } from "../core/projectStore.js";
+import { BASE_PATH, loadImage } from "./pdfUtils.js";
 
 export async function generateGeneralCoverPdf(pdf) {
-    const BASE_PATH = window.location.pathname.split("/")[1]
-        ? "/" + window.location.pathname.split("/")[1]
-        : "";
-
     const data = getFormData("Equipo");
     if (!data) {
         alert("Guarda primero el formulario");
@@ -22,16 +19,6 @@ export async function generateGeneralCoverPdf(pdf) {
     /* =====================
        UTILIDADES
     ====================== */
-    const loadImage = async (src) => {
-        const res = await fetch(src);
-        const blob = await res.blob();
-        return new Promise(resolve => {
-            const reader = new FileReader();
-            reader.onload = () => resolve(reader.result);
-            reader.readAsDataURL(blob);
-        });
-    };
-
     const drawCentered = (text, y, size = 14, bold = false) => {
         pdf.setFont("times", bold ? "bold" : "normal");
         pdf.setFontSize(size);
@@ -49,23 +36,29 @@ export async function generateGeneralCoverPdf(pdf) {
     const fi = pdf.getImageProperties(escudoFI);
     const unam = pdf.getImageProperties(escudoUNAM);
 
-    pdf.addImage(
-        escudoFI,
-        "PNG",
-        MARGIN,
-        15,
-        escudoW,
-        (fi.height * escudoW) / fi.width
-    );
+    if (escudoFI) {
+        const fi = pdf.getImageProperties(escudoFI);
+        pdf.addImage(
+            escudoFI,
+            "PNG",
+            MARGIN,
+            15,
+            escudoW,
+            (fi.height * escudoW) / fi.width
+        );
+    }
 
-    pdf.addImage(
-        escudoUNAM,
-        "PNG",
-        PAGE_WIDTH - MARGIN - escudoW,
-        15,
-        escudoW,
-        (unam.height * escudoW) / unam.width
-    );
+    if (escudoUNAM) {
+        const unam = pdf.getImageProperties(escudoUNAM);
+        pdf.addImage(
+            escudoUNAM,
+            "PNG",
+            PAGE_WIDTH - MARGIN - escudoW,
+            15,
+            escudoW,
+            (unam.height * escudoW) / unam.width
+        );
+    }
 
     /* =====================
        ENCABEZADO INSTITUCIONAL
@@ -155,6 +148,7 @@ export async function generateGeneralCoverPdf(pdf) {
         12
     );
 }
+
 
 
 
