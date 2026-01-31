@@ -37,8 +37,8 @@ export async function generateGeneralCoverPdf(pdf) {
     /* =====================
        ESCUDOS (SIN APLASTAR)
     ====================== */
-    const escudoFI = await loadImage("/../../img/escudoFI.png");
-    const escudoUNAM = await loadImage("/../../img/escudoUNAM.png");
+    const escudoFI = await loadImage("../../img/escudoFI.png");
+    const escudoUNAM = await loadImage("../../img/escudoUNAM.png");
 
     const escudoW = 22;
     const fi = pdf.getImageProperties(escudoFI);
@@ -150,3 +150,4 @@ export async function generateGeneralCoverPdf(pdf) {
         12
     );
 }
+
