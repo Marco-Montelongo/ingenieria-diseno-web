@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ingeniería de Diseño</title>
+    <link rel="stylesheet" href="css/styles.css" />
+</head>
+
+<body>
+    <header class="main-header">
+        <img src="img/escudoUNAM.png" alt="Escudo de la UNAM" class="header-logo">
+        <h1 class="header-title">Metodología de Diseño Genérica</h1>
+        <button class="menu-toggle" onclick="toggleSidebar()">☰</button>
+        <img src="img/escudoFI.png" alt="Escudo de la FI" class="header-logo">
+    </header>
+
+    <div class="container">
+        <nav class="sidebar" id="sidebarMenu">
+            <button class="close-btn" onclick="toggleSidebar()">×</button>
+            <div class="sidebar-content" id="sidebarContent"></div>
+        </nav>
+
+        <main class=" content" id="content-area"></main>
+    </div>
+
+    <footer class="main-footer">
+        <button class="download-btn" onclick="exportProjectToJson()">💾 Descargar JSON</button>
+        <button class="download-btn" onclick="downloadPDF()">📄 Generar reporte</button>
+        <button class="download-btn" onclick="importProjectFromJson()">📂 Cargar JSON</button>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+    <script type="module" src="js/main.js"></script>
+</body>
+
+</html>

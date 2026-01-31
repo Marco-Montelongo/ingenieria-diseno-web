@@ -1,0 +1,496 @@
+/* ==================================================
+   RESET Y BASE
+   ================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    background: #f4f4f8;
+    color: #1f2933;
+    display: flex;
+    flex-direction: column;
+    line-height: 1.5;
+}
+
+/* ==================================================
+   HEADER
+   ================================================== */
+.main-header {
+    height: 80px;
+    background: #0C2340;
+    color: #ffffff;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.header-logo {
+    height: 58px;
+}
+
+.header-title {
+    flex: 1;
+    text-align: center;
+    font-size: 1.7rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: #fff;
+    cursor: pointer;
+}
+
+/* ==================================================
+   LAYOUT PRINCIPAL
+   ================================================== */
+.container {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    height: calc(100vh - 160px);
+    overflow: hidden;
+}
+
+/* ==================================================
+   SIDEBAR
+   ================================================== */
+.sidebar {
+    background: #13294B;
+    color: #ffffff;
+    padding: 20px 12px;
+    overflow-y: auto;
+    border-right: 4px solid #0F3D63;
+}
+
+.sidebar .close-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 2rem;
+    margin-bottom: 12px;
+    cursor: pointer;
+}
+
+.sidebar-section {
+    margin-bottom: 14px;
+}
+
+.sidebar-title {
+    padding: 10px 12px;
+    background: #0F3D63;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 0.95rem;
+}
+
+.sidebar-title:hover {
+    background: #155487;
+}
+
+.sidebar-subitems {
+    margin-top: 6px;
+    margin-left: 12px;
+    display: none;
+    flex-direction: column;
+}
+
+.sidebar-subitems.open {
+    display: block;
+}
+
+.sidebar-subitem {
+    padding: 8px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.sidebar-subitem:hover {
+    background: rgba(255, 255, 255, 0.12);
+}
+
+/* ==================================================
+   HOME / MANUAL DE USUARIO
+   ================================================== */
+
+.home-manual {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* Cabecera del manual */
+.home-manual__header {
+    margin-bottom: 32px;
+}
+
+.home-manual__title {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #0C2340;
+    margin-bottom: 12px;
+}
+
+.home-manual__intro {
+    font-size: 1rem;
+    color: #374151;
+    max-width: 900px;
+}
+
+/* Secciones del manual */
+.home-manual__section {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 22px 26px;
+    margin-bottom: 26px;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.06);
+}
+
+.home-manual__section-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #0C2340;
+    margin-bottom: 14px;
+    padding-left: 12px;
+    border-left: 5px solid #0C2340;
+}
+
+/* Listas de pasos */
+.home-manual__list {
+    margin-left: 18px;
+    color: #374151;
+}
+
+.home-manual__list li {
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+/* Palabras clave */
+.home-manual__highlight {
+    font-weight: 600;
+    color: #0C2340;
+}
+
+/* Bloque de advertencia / recordatorio */
+.home-manual__note {
+    margin-top: 16px;
+    padding: 14px 18px;
+    border-left: 5px solid #1E5A8A;
+    background: #eef6ff;
+    border-radius: 8px;
+    color: #1f2933;
+    font-weight: 500;
+}
+
+/* Resumen final */
+.home-manual__summary {
+    list-style: disc;
+    margin-left: 22px;
+}
+
+.home-manual__summary li {
+    margin-bottom: 8px;
+}
+
+/* ==================================================
+   CONTENIDO PRINCIPAL
+   ================================================== */
+.content {
+    padding: 28px 40px;
+    overflow-y: auto;
+}
+
+.content h2 {
+    font-size: 1.6rem;
+    margin-bottom: 10px;
+    padding-left: 12px;
+    border-left: 6px solid #0C2340;
+    color: #0C2340;
+}
+
+.content p {
+    margin-bottom: 18px;
+    color: #374151;
+    max-width: 900px;
+}
+
+/* ==================================================
+   FORMULARIOS (CORE)
+   ================================================== */
+form {
+    max-width: 950px;
+    background: #ffffff;
+    padding: 22px 26px;
+    border-radius: 12px;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+}
+
+/* ==================================================
+   CORRECCIÓN DE CAMPOS AMONTONADOS
+   ================================================== */
+
+/* Fuerza estructura vertical real */
+.form-field {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 6px;
+}
+
+/* El label siempre arriba */
+.field-label {
+    display: block;
+    width: 100%;
+}
+
+/* Inputs y textareas ocupan todo el ancho */
+.field-keywords,
+.field-textarea {
+    width: 100%;
+    max-width: 100%;
+    display: block;
+}
+
+/* Texto de ayuda debajo del campo */
+.form-field .help-text,
+.form-field small {
+    display: block;
+    width: 100%;
+    font-size: 0.85rem;
+    color: #4b5563;
+    margin-top: 2px;
+    line-height: 1.4;
+}
+
+/* Contador siempre abajo y alineado a la derecha */
+.char-counter {
+    position: static;
+    align-self: flex-end;
+    font-size: 0.75rem;
+    color: #6b7280;
+    margin-top: 2px;
+}
+
+/* --- Textareas con contador --- */
+.textarea-wrapper {
+    position: relative;
+}
+
+.field-textarea {
+    width: 100%;
+    min-height: 110px;
+    padding: 12px 14px;
+    border-radius: 10px;
+    border: 1px solid #cbd5e1;
+    resize: vertical;
+    font-size: 0.95rem;
+    line-height: 1.45;
+}
+
+.char-counter {
+    position: absolute;
+    right: 10px;
+    bottom: 8px;
+    font-size: 0.75rem;
+    color: #6b7280;
+}
+
+.char-counter.limit-reached {
+    color: #9b1c1c;
+    font-weight: 600;
+}
+
+/* ==================================================
+   ACCIONES DEL FORMULARIO
+   ================================================== */
+.form-actions {
+    margin-top: 22px;
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+}
+
+.form-actions button {
+    background: #0C2340;
+    color: #ffffff;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.form-actions button:hover {
+    background: #1E5A8A;
+}
+
+/* ==================================================
+   LISTA DE INTEGRANTES
+   ================================================== */
+.integrantes-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.integrante-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: #eef6ff;
+    border: 1px solid #cfe9ff;
+    font-size: 0.9rem;
+}
+
+.remove-member {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #7a1f1f;
+    font-size: 0.9rem;
+}
+
+/* ==================================================
+   FOOTER
+   ================================================== */
+.main-footer {
+    height: 80px;
+    background: #0C2340;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    padding: 10px 20px;
+}
+
+.download-btn {
+    background: #1E5A8A;
+    color: #ffffff;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    cursor: pointer;
+}
+
+.download-btn:hover {
+    background: #2C75B0;
+}
+
+.image-field {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* centra label, img y botón */
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.image-label {
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.preview,
+.preview-placeholder {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    background-color: #f0f0f0;
+    /* color placeholder si no hay imagen */
+    display: block;
+}
+
+.image-input {
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    background-color: #fafafa;
+    transition: all 0.2s ease;
+}
+
+.image-input:hover {
+    background-color: #f0f0f0;
+    border-color: #999;
+}
+
+
+/* ==================================================
+   RESPONSIVE
+   ================================================== */
+@media (max-width: 900px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    .container {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        position: fixed;
+        top: 80px;
+        left: 0;
+        width: 240px;
+        height: calc(100% - 80px);
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+        z-index: 999;
+    }
+
+    .sidebar.active {
+        transform: translateX(0);
+    }
+
+    .sidebar .close-btn {
+        display: block;
+    }
+}
+
+@media (max-width: 600px) {
+    .main-footer {
+        flex-direction: row;
+    }
+
+    .download-btn {
+        width: 50%;
+    }
+
+    .home-manual__section {
+        padding: 18px 20px;
+    }
+
+    .home-manual__title {
+        font-size: 1.7rem;
+    }
+
+    .home-manual__section-title {
+        font-size: 1.25rem;
+    }
+}
