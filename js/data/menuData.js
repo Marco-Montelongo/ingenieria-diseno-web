@@ -41,9 +41,9 @@ export const menuData = [
     },
     {
         id: "elaboracionProblema",
-        title: "1. Elaboración del problema",
+        title: "1. Identificación del problema",
         items: [
-            { id: "1_1", label: "1.1 Identificación de la necesidad" },
+            { id: "1_1", label: "1.1 Identificación de necesidades" },
             { id: "1_2", label: "1.2 Definir el problema" },
             { id: "1_3", label: "1.3 Búsqueda de información" },
             { id: "1_4", label: "1.4 Especificaciones y requerimientos" },
@@ -64,7 +64,7 @@ export const menuData = [
     },
     {
         id: "disenoDetallado",
-        title: "3. Diseño detallado del sistema",
+        title: "3. Diseño de Detalle",
         items: [
             { id: "3_1", label: "3.1 Diseño de configuración" },
             { id: "3_2", label: "3.2 Diagrama de cuerpo libre" },

@@ -26,9 +26,12 @@
     </div>
 
     <footer class="main-footer">
-        <button class="download-btn" onclick="exportProjectToJson()">💾 Descargar JSON</button>
-        <button class="download-btn" onclick="downloadPDF()">📄 Generar reporte</button>
-        <button class="download-btn" onclick="importProjectFromJson()">📂 Cargar JSON</button>
+        <div class="button-group">
+            <button class="download-btn" onclick="exportProjectToJson()">💾 Descargar JSON</button>
+            <button class="download-btn" onclick="downloadPDF()">📄 Generar reporte</button>
+            <button class="download-btn" onclick="importProjectFromJson()">📂 Cargar JSON</button>
+        </div>
+        <p class="footer-label">Última actualización: 19 de septiembre de 2026</p>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>

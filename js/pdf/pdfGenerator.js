@@ -10,7 +10,7 @@ async function drawInstitutionalHeader(pdf) {
     const escudoUNAM = await loadImage(`${BASE_PATH}/img/escudoUNAM.png`);
 
     if (escudoFI) {
-        pdf.addImage(escudoFI, "PNG", MARGIN, MARGIN, 20, 20);
+        pdf.addImage(escudoFI, "PNG", MARGIN, MARGIN, 20, 24);
     }
 
     if (escudoUNAM) {
@@ -20,7 +20,7 @@ async function drawInstitutionalHeader(pdf) {
             PAGE_WIDTH - MARGIN - 20,
             MARGIN,
             20,
-            20
+            24
         );
     }
 

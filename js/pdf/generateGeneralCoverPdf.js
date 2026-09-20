@@ -69,13 +69,13 @@ export async function generateGeneralCoverPdf(pdf) {
         16,
         true
     );
-    drawCentered("FACULTAD DE INGENIERÍA", 60, 14, true);
+    drawCentered("FACULTAD DE INGENIERÍA", 60, 16, true);
     drawCentered("INGENIERÍA DE DISEÑO", 70, 14, true);
 
     /* =====================
        TÍTULO DEL PROYECTO
     ====================== */
-    const titleY = 85;
+    const titleY = 95;
     const titlePaddingBottom = 8;
 
     pdf.setFont("times", "bold");
@@ -83,7 +83,6 @@ export async function generateGeneralCoverPdf(pdf) {
 
     const projectTitle = (data.projectName || "").toUpperCase();
     const titleMaxWidth = PAGE_WIDTH - (MARGIN * 2);
-
     const titleLines = pdf.splitTextToSize(projectTitle, titleMaxWidth);
 
     pdf.text(
@@ -94,29 +93,16 @@ export async function generateGeneralCoverPdf(pdf) {
     );
 
     /* =====================
-       DATOS ACADÉMICOS
-    ====================== */
-    const titleDimensions = pdf.getTextDimensions(titleLines);
-    const titleHeight = titleDimensions.h;
-
-    let baseY = titleY + titleHeight + titlePaddingBottom;
-    const gap = 12;
-
-    drawCentered(`Grupo: ${data.group || ""}`, baseY);
-    drawCentered(`Equipo: ${data.teamNumber || ""}`, baseY + gap);
-    drawCentered(`Semestre: ${data.semester || ""}`, baseY + gap * 2);
-    drawCentered(
-        "Profesor: Dr. Leopoldo Adrián González González",
-        baseY + gap * 3
-    );
-
-    /* =====================
        INTEGRANTES DEL EQUIPO
     ===================== */
-    let membersY = baseY + gap * 5;
+    const titleDimensions = pdf.getTextDimensions(titleLines);
+    const titleHeight = titleDimensions.h;
+    const gap = 12;
 
-    drawCentered("INTEGRANTES DEL EQUIPO", membersY, 14, true);
-    membersY += 12;
+    let baseY = titleY + titleHeight + titlePaddingBottom;
+    
+    drawCentered("INTEGRANTES DEL EQUIPO", baseY, 14, true);
+    baseY += gap;
 
     pdf.setFont("times", "normal");
     pdf.setFontSize(13);
@@ -129,9 +115,16 @@ export async function generateGeneralCoverPdf(pdf) {
         .sort((a, b) => a.localeCompare(b, "es", { sensitivity: "base" }));
 
     members.forEach(member => {
-        pdf.text(member, CENTER_X, membersY, { align: "center" });
-        membersY += 8;
+        pdf.text(member, CENTER_X, baseY, { align: "center" });
+        baseY += 8;
     });
+
+    /* =====================
+       DATOS ACADÉMICOS
+    ====================== */
+    drawCentered(`Profesor(a): ${data.teacher || ""}`, baseY + gap);
+    drawCentered(`Grupo: ${data.group || ""}`, baseY + gap * 2);
+    drawCentered(`Semestre: ${data.semester || ""}`, baseY + gap * 3);
 
     /* =====================
        FECHA (SIEMPRE AL FINAL)
