@@ -32,7 +32,7 @@ export const form1_1 = {
             key: "problemSituation",
             label: "Identificación de la situación",
             type: "text",
-            max: 1200,
+            max: 1200*3,
             rows: 8,
             help: "Describe la situación que genera malestar, dificultad o insatisfacción en el contexto analizado. Redacta un solo párrafo."
         },
@@ -40,7 +40,7 @@ export const form1_1 = {
             key: "contextDescription",
             label: "Contexto de la necesidad",
             type: "text",
-            max: 1200,
+            max: 1200*3,
             rows: 8,
             help: "Reconoce y describe el contexto en el que ocurre la necesidad identificada. Redacta un solo párrafo."
         },
@@ -48,7 +48,7 @@ export const form1_1 = {
             key: "affectedStakeholders",
             label: "Personas o grupos afectados",
             type: "text",
-            max: 1200,
+            max: 1200*3,
             rows: 8,
             help: "Identifica y describe a las personas, grupos o sectores que se ven afectados por esta situación. Redacta un solo párrafo."
         },
@@ -56,7 +56,7 @@ export const form1_1 = {
             key: "potentialConsequences",
             label: "Consecuencias de no atender la necesidad",
             type: "text",
-            max: 1200,
+            max: 1200*3,
             rows: 8,
             help: "Reconoce y explica las consecuencias o efectos que podrían surgir si la necesidad no es atendida. Redacta un solo párrafo."
         },
@@ -64,7 +64,7 @@ export const form1_1 = {
             key: "previousAttempts",
             label: "Intentos o soluciones implementadas",
             type: "text",
-            max: 1200,
+            max: 1200*5,
             rows: 8,
             help: "Identifica, lista y describe los intentos o soluciones que se han implementado. Explica por qué no logran satisfacer completamente la necesidad. Extensión sugerida: media cuartilla."
         },
@@ -72,17 +72,17 @@ export const form1_1 = {
             key: "resourcesAndConstraints",
             label: "Recursos y limitaciones",
             type: "text",
-            max: 1200,
+            max: 1200*3,
             rows: 8,
             help: "Identifica y explica los recursos, limitaciones o condiciones que influyen en la aparición o permanencia de esta situación. Redacta un solo párrafo."
         },
         {
             key: "needSummary",
-            label: "Síntesis de la necesidad identificada",
+            label: "Síntesis de las necesidades identificadas",
             type: "text",
-            max: 1200,
+            max: 1200*5,
             rows: 8,
-            help: "Redacta un párrafo que sintetice claramente la necesidad identificada, integrando los aspectos abordados en los puntos anteriores."
+            help: "Redacta un texto que sintetice claramente las necesidades identificadas, integrando los aspectos abordados en los puntos anteriores."
         }
     ]
 };

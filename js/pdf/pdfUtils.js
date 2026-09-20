@@ -5,12 +5,16 @@ export const BASE_PATH = window.location.pathname.split("/")[1]
     : "";
 
 export const loadImage = async (src) => {
+
+    // String Base64 de un JPG de 1x1 pixeles
+    const BLANK_IMAGE = "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAP//////////////////////////////////////////////////////////////////////////////////////wgALCAABAAEBAREA/8QAFBABAAAAAAAAAAAAAAAAAAAAAP/aAAgBAQABPxA=";
+    
     try {
         const res = await fetch(src);
 
         if (!res.ok) {
             console.error("Imagen no encontrada:", src);
-            return null;
+            return BLANK_IMAGE;
         }
 
         const blob = await res.blob();
@@ -22,6 +26,6 @@ export const loadImage = async (src) => {
         });
     } catch (err) {
         console.error("Error cargando imagen:", src, err);
-        return null;
+        return BLANK_IMAGE;
     }
 };

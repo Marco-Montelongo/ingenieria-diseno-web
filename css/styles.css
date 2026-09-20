@@ -376,13 +376,14 @@ form {
    FOOTER
    ================================================== */
 .main-footer {
-    height: 80px;
+    height: auto;
     background: #0C2340;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 14px;
-    padding: 10px 20px;
+    padding-top: 15px;
+    padding-bottom: 0px;
 }
 
 .download-btn {
@@ -440,6 +441,18 @@ form {
     border-color: #999;
 }
 
+.button-group {
+    display: flex;
+    gap: 10px;
+}
+
+.footer-label {
+    height: 15px;
+    font-size: 9px;
+    color: #2d3366;
+    align-self: self-end;
+    padding-right: 5px;
+}
 
 /* ==================================================
    RESPONSIVE
@@ -471,11 +484,15 @@ form {
     .sidebar .close-btn {
         display: block;
     }
+
+    .header-title {
+        font-size: 1.4rem;
+    }
 }
 
 @media (max-width: 600px) {
     .main-footer {
-        flex-direction: row;
+        flex-direction: column;
     }
 
     .download-btn {
@@ -492,5 +509,9 @@ form {
 
     .home-manual__section-title {
         font-size: 1.25rem;
+    }
+
+    .header-title {
+        font-size: 1.0rem;
     }
 }
